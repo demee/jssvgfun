@@ -1,19 +1,22 @@
-<%-- 
-    Document   : index
-    Created on : 04-Mar-2011, 22:29:46
-    Author     : sdemichowicz
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%><!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+	<head>
+		<title>Simple raphael animation test</title>
+                <style type="text/css">
+                    body div#container {
+                        width: 100%;
+                        height: 100%; 
+                    }
+
+                </style>
+	</head>
+	<body>
+            <div id="container"></div>
+		<script type="text/javascript" src="./js/lib/raphael/raphael-min.js"></script>
+		<script type="text/javascript" src="./js/src/simpleanimation.js"></script>
+                <script type="text/javascript">
+                    window.setTimeout(demee.test.SimpleAnimation.initApp, 100);
+                </script>
+
+	</body>
 </html>
