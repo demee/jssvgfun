@@ -1,61 +1,18 @@
-var paper = new Raphael('canvas');
-
-
-/* Class Line */
-function Line(x, y, xx, yy, attrs) {
-    this.x = x;
-    this.y = y;
-    this.xx = xx;
-    this.yy = yy;
-    this.attrs;
+Raphael.fn.line = function(x, y, xx, yy) {    
+    return this.path(['M', x, y, 'L', xx, yy].join(' '));
 }
 
-Line.prototype.render = function() {
-    var path = ['M', this.x, this.y, 'L', this.xx, this.yy].join(' ');
-    this.l = paper.path(path);
-};
+Raphael.fn.vLine = function(x, y, w){
+    return this.line(x, y, x + w, y);  
+}
+
+Raphael.fn.hLine = function (x, y, h){
+    return this.line(x, y, x, y + h);
+}
+
+Raphael.fn.aLine = function (x, y, l, a){
+    var xx = x + l * Math.cos(a / 180 * Math.PI);
+    var yy = y + l * Math.sin(a / 180 * Math.PI);    
     
-Line.prototype.decorate = function(){
-    this.l.attr(this.attrs);
-};
-
-/* <------------------------ Line */
-
-/* Class VLine extends Line */
-function VLine(x, y, w) {
-    this.x = x;
-    this.y = y;
-    this.xx = x;
-    this.yy = y + w;
+    return this.line(x, y, xx, yy);
 }
-
-VLine.prototype = new Line();
-VLine.prototype.constructor = Line;
-/* <-------------------- VLine */
-
-/* Class HLine extends Line */
-function HLine(x, y, w){
-    this.x = x;
-    this.y = y;
-    this.xx = x + w;
-    this.yy = y;
-}
-
-HLine.prototype = new Line();
-HLine.prototype.constructor = Line;
-/* <--------------------- HLine */
-
-
-/* Class Aline extends Line */
-
-function ALine(x, y, w, a){
-    this.x = x;
-    this.y = y;
-    this.xx = x + w * Math.cos(a / 180 * Math.PI);
-    this.yy = y + w * Math.sin(a / 180 * Math.PI);
-}
-
-ALine.prototype = new Line();
-ALine.prototype.constructor = Line;
-
-/* <-------------------- ALine */ 
